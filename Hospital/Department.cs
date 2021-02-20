@@ -15,7 +15,7 @@ namespace Hospital
             Console.WriteLine();
             for (int i = 0; i < Doctors.Count; i++)
             {
-                Console.WriteLine($"{i+1}) {Doctors[i].Name} {Doctors[i].Surname}");
+                Console.WriteLine($"{Doctors[i].ID}) {Doctors[i].Name} {Doctors[i].Surname}");
                 Console.WriteLine();
             }
         }

@@ -37,15 +37,25 @@ namespace Hospital
                 select = Console.ReadLine();
 
                 if(select.Equals("1"))
-                {
                     SelectDoctor(hospital.Pediatriya);
-                }
+                else if (select.Equals("2"))
+                    SelectDoctor(hospital.Travmatologiya);
+                else if(select.Equals("3"))
+                    SelectDoctor(hospital.Stamotologiya);
+
             } while (select != "1" && select != "2" && select != "3");
         }
 
         public static void SelectDoctor(Department department)
         {
-            department.PrintDoctors();
+            bool find = false;
+            do
+            {
+                department.PrintDoctors();
+                Console.Write("Select your doctor : ");
+                string doctorID = Console.ReadLine();
+
+            } while (true);
 
         }
 
