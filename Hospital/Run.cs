@@ -93,35 +93,14 @@ namespace Hospital
                 department.PrintDoctorWorktimes(doctor);
                 Console.Write("\nSelect your reservation : ");
                 string reservation = Console.ReadLine();
-                if (reservation == "1")
+                if(reservation.Equals("1") || reservation.Equals("2") || reservation.Equals("3"))
                 {
-                    if (!doctor.WorkTimes["09:00-11:00"])
+                    var time = doctor.WorkTimes.ElementAt(Convert.ToInt32(reservation) - 1);
+                    if(!time.Value)
                     {
                         rez = true;
-                        doctor.WorkTimes["09:00-11:00"] = true;
-                        Console.WriteLine($"Tesekkurler {user.Name} {user.Surname}, Siz 09:00-11:00 da {doctor.Name} hekimin qebuluna yazildiniz.");
-                        Thread.Sleep(1500);
-                        RunProgram(hospital);
-                    }
-                }
-                else if (reservation == "2")
-                {
-                    if (!doctor.WorkTimes["12:00-14:00"])
-                    {
-                        rez = true;
-                        doctor.WorkTimes["12:00-14:00"] = true;
-                        Console.WriteLine($"Tesekkurler {user.Name} {user.Surname}, Siz 12:00-14:00 da {doctor.Name} hekimin qebuluna yazildiniz.");
-                        Thread.Sleep(1500);
-                        RunProgram(hospital);
-                    }
-                }
-                else if (reservation == "3")
-                {
-                    if (!doctor.WorkTimes["15:00-17:00"])
-                    {
-                        rez = true;
-                        doctor.WorkTimes["15:00-17:00"] = true;
-                        Console.WriteLine($"Tesekkurler {user.Name} {user.Surname}, Siz 15:00-17:00 da {doctor.Name} hekimin qebuluna yazildiniz.");
+                        doctor.WorkTimes[time.Key] = true;
+                        Console.WriteLine($"\nTesekkurler {user.Name} {user.Surname}, Siz {time.Key} da {doctor.Name} hekimin qebuluna yazildiniz.");
                         Thread.Sleep(1500);
                         RunProgram(hospital);
                     }
@@ -129,7 +108,7 @@ namespace Hospital
                 if (!rez)
                 {
 
-                    Console.WriteLine("Teessuf ki sizin secdiyiniz vaxt rezerv olunub");
+                    Console.WriteLine("\nTeessuf ki sizin secdiyiniz vaxt rezerv olunub");
                     Thread.Sleep(1500);
                     SelectDoctorReservation(department, doctor, ref hospital, user);
                 }
