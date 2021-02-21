@@ -17,10 +17,12 @@ namespace Hospital
         public Doctor()
         {
             ID = ++s_id;
-            WorkTimes = new Dictionary<string, bool>();
-            WorkTimes["09:00-11:00"] = false;
-            WorkTimes["12:00-14:00"] = false;
-            WorkTimes["15:00-17:00"] = false;
+            WorkTimes = new Dictionary<string, bool>
+            {
+                ["09:00-11:00"] = false,
+                ["12:00-14:00"] = false,
+                ["15:00-17:00"] = false
+            };
         }
     }
 }
