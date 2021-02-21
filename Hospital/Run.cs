@@ -37,7 +37,6 @@ namespace Hospital
 
                 Console.Write("\nEnter your choice : ");
                 select = Console.ReadLine();
-
                 if (select.Equals("1"))
                     SelectDoctor(hospital.Pediatriya, ref hospital, user);
                 else if (select.Equals("2"))
@@ -67,12 +66,7 @@ namespace Hospital
                             SelectDoctorReservation(department, doctor, ref hospital, user);
                         }
                     }
-                    if (!find)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Enter correct ID !");
-                        Thread.Sleep(1500);
-                    }
+                    if (!find) throw new ArgumentException();
                 }
                 catch (Exception)
                 {
