@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Department.cs" />
     <Compile Include="Doctor.cs" />
+    <Compile Include="File.cs" />
     <Compile Include="Hospital.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

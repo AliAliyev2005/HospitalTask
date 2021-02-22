@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hospital
 {
-    class Hospital
+    public class Hospital
     {
         public Department Pediatriya { get; set; }
         public Department Travmatologiya { get; set; }

@@ -10,7 +10,9 @@ namespace Hospital
     {
         static void Main(string[] args)
         {
-            Run.RunProgram(new Hospital());   
+            Hospital hospital = new Hospital();
+            File.Download(ref hospital);
+            Run.RunProgram(ref hospital);
         }
     }
 }

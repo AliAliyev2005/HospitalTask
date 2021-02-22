@@ -47,6 +47,7 @@ namespace Hospital
                     Console.WriteLine("1) Pediatriya");
                     Console.WriteLine("2) Travmatologiya");
                     Console.WriteLine("3) Stamotologiya");
+                    Console.WriteLine("0) Exit");
                     Console.Write("\nEnter your choice : ");
                     select = Console.ReadLine();
                     if (select.Equals("1"))
@@ -55,6 +56,11 @@ namespace Hospital
                         SelectDoctor(hospital.Travmatologiya, ref hospital, user);
                     else if (select.Equals("3"))
                         SelectDoctor(hospital.Stamotologiya, ref hospital, user);
+                    else if(select.Equals("0"))
+                    {
+                        File.Save(ref hospital);
+                        Environment.Exit(0);
+                    }
                     else throw new ArgumentException();
                 }
                 catch (Exception)
@@ -115,8 +121,14 @@ namespace Hospital
                         doctor.WorkTimes[time.Key] = true;
                         Console.WriteLine($"\nTesekkurler {user.Name} {user.Surname}, Siz {time.Key} da {doctor.Name} hekimin qebuluna yazildiniz.");
                         Thread.Sleep(1500);
-                        RunProgram(hospital);
+                        RunProgram(ref hospital);
                     }
+                }
+                else
+                {
+                    Console.WriteLine("\nSeciminiz yanlisdir");
+                    Thread.Sleep(1500);
+                    SelectDoctorReservation(department, doctor, ref hospital, user);
                 }
                 if (!rez)
                 {
@@ -127,7 +139,7 @@ namespace Hospital
             } while (!rez);
         }
 
-        public static void RunProgram(Hospital hospital)
+        public static void RunProgram(ref Hospital hospital)
         {
             User user = EnterUser();
             SelectDepartment(ref hospital, ref user);
