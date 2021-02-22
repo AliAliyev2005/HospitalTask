@@ -23,9 +23,9 @@ namespace Hospital
             get { return _name; }
             set
             {
-                if (!value.Equals(string.Empty))
-                    _name = value;
-                else throw new ArgumentNullException("User name can't be NULL !");
+                if (value.Equals(string.Empty))
+                    throw new ArgumentNullException("User name can't be NULL !");
+                else _name = value;
             }
         }
         private string _surname;
@@ -34,9 +34,9 @@ namespace Hospital
             get { return _surname; }
             set
             {
-                if (!value.Equals(string.Empty))
-                    _surname = value;
-                else throw new ArgumentNullException("User surname can't be NULL !");
+                if (value.Equals(string.Empty))
+                    throw new ArgumentNullException("User surname can't be NULL !");
+                else _surname = value;
             }
         }
         private string _email;
@@ -45,9 +45,9 @@ namespace Hospital
             get { return _email; }
             set
             {
-                if (!value.Equals(string.Empty))
-                    _email = value;
-                else throw new ArgumentNullException("User email can't be NULL !");
+                if (value.Equals(string.Empty))
+                    throw new ArgumentNullException("User email can't be NULL !");
+                else _email = value;
             }
         }
         private string _phone;
@@ -56,9 +56,9 @@ namespace Hospital
             get { return _phone; }
             set
             {
-                if (!value.Equals(string.Empty))
-                    _phone = value;
-                else throw new ArgumentNullException("User phone can't be NULL !");
+                if (value.Equals(string.Empty))
+                    throw new ArgumentNullException("User phone can't be NULL !");
+                else _phone = value;
             }
         }
     }

@@ -14,12 +14,18 @@ namespace Hospital
 
         public Hospital()
         {
-            Pediatriya = new Department();
-            Pediatriya.Doctors = new List<Doctor>();
-            Travmatologiya = new Department();
-            Travmatologiya.Doctors = new List<Doctor>();
-            Stamotologiya = new Department();
-            Stamotologiya.Doctors = new List<Doctor>();
+            Pediatriya = new Department
+            {
+                Doctors = new List<Doctor>()
+            };
+            Travmatologiya = new Department
+            {
+                Doctors = new List<Doctor>()
+            };
+            Stamotologiya = new Department
+            {
+                Doctors = new List<Doctor>()
+            };
 
             Pediatriya.Doctors.Add(new Doctor
             {
@@ -66,6 +72,5 @@ namespace Hospital
                 Practise = 8
             });
         }
-
     }
 }

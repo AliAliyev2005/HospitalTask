@@ -120,7 +120,6 @@ namespace Hospital
                 }
                 if (!rez)
                 {
-
                     Console.WriteLine("\nTeessuf ki sizin secdiyiniz vaxt rezerv olunub");
                     Thread.Sleep(1500);
                     SelectDoctorReservation(department, doctor, ref hospital, user);
@@ -130,8 +129,7 @@ namespace Hospital
 
         public static void RunProgram(Hospital hospital)
         {
-            User user = new User();
-            user = EnterUser();
+            User user = EnterUser();
             SelectDepartment(ref hospital, ref user);
         }
     }
