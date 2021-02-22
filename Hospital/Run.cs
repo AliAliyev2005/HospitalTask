@@ -12,38 +12,57 @@ namespace Hospital
     {
         public static User EnterUser()
         {
-            Console.Clear();
-            Console.Write("Enter your name : ");
-            string name = Console.ReadLine();
-            Console.Write("Enter your surname : ");
-            string surname = Console.ReadLine();
-            Console.Write("Enter your email : ");
-            string email = Console.ReadLine();
-            Console.Write("Enter your phone : ");
-            string phone = Console.ReadLine();
-
-            return new User(name, surname, email, phone);
+            User user = new User();
+            try
+            {
+                Console.Clear();
+                Console.Write("Enter your name : ");
+                string name = Console.ReadLine();
+                Console.Write("Enter your surname : ");
+                string surname = Console.ReadLine();
+                Console.Write("Enter your email : ");
+                string email = Console.ReadLine();
+                Console.Write("Enter your phone : ");
+                string phone = Console.ReadLine();
+                user = new User(name, surname, email, phone);
+            }
+            catch (Exception ex)
+            {
+                Console.Clear();
+                Console.WriteLine(ex.Message);
+                Thread.Sleep(1500);
+                EnterUser();
+            }
+            return user;
         }
 
         public static void SelectDepartment(ref Hospital hospital, ref User user)
         {
-            Console.Clear();
-            string select;
+            string select = "";
             do
             {
-                Console.WriteLine("1) Pediatriya");
-                Console.WriteLine("2) Travmatologiya");
-                Console.WriteLine("3) Stamotologiya");
-
-                Console.Write("\nEnter your choice : ");
-                select = Console.ReadLine();
-                if (select.Equals("1"))
-                    SelectDoctor(hospital.Pediatriya, ref hospital, user);
-                else if (select.Equals("2"))
-                    SelectDoctor(hospital.Travmatologiya, ref hospital, user);
-                else if (select.Equals("3"))
-                    SelectDoctor(hospital.Stamotologiya, ref hospital, user);
-
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("1) Pediatriya");
+                    Console.WriteLine("2) Travmatologiya");
+                    Console.WriteLine("3) Stamotologiya");
+                    Console.Write("\nEnter your choice : ");
+                    select = Console.ReadLine();
+                    if (select.Equals("1"))
+                        SelectDoctor(hospital.Pediatriya, ref hospital, user);
+                    else if (select.Equals("2"))
+                        SelectDoctor(hospital.Travmatologiya, ref hospital, user);
+                    else if (select.Equals("3"))
+                        SelectDoctor(hospital.Stamotologiya, ref hospital, user);
+                    else throw new ArgumentException();
+                }
+                catch (Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Your choice is wrong !");
+                    Thread.Sleep(1500);
+                }
             } while (select != "1" && select != "2" && select != "3");
         }
 
@@ -87,10 +106,10 @@ namespace Hospital
                 department.PrintDoctorWorktimes(doctor);
                 Console.Write("\nSelect your reservation : ");
                 string reservation = Console.ReadLine();
-                if(reservation.Equals("1") || reservation.Equals("2") || reservation.Equals("3"))
+                if (reservation.Equals("1") || reservation.Equals("2") || reservation.Equals("3"))
                 {
                     var time = doctor.WorkTimes.ElementAt(Convert.ToInt32(reservation) - 1);
-                    if(!time.Value)
+                    if (!time.Value)
                     {
                         rez = true;
                         doctor.WorkTimes[time.Key] = true;

@@ -17,9 +17,49 @@ namespace Hospital
             Phone = phone;
         }
 
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        private string _name;
+        public string Name 
+        {
+            get { return _name; }
+            set
+            {
+                if (!value.Equals(string.Empty))
+                    _name = value;
+                else throw new ArgumentNullException("User name can't be NULL !");
+            }
+        }
+        private string _surname;
+        public string Surname
+        {
+            get { return _surname; }
+            set
+            {
+                if (!value.Equals(string.Empty))
+                    _surname = value;
+                else throw new ArgumentNullException("User surname can't be NULL !");
+            }
+        }
+        private string _email;
+        public string Email
+        {
+            get { return _email; }
+            set
+            {
+                if (!value.Equals(string.Empty))
+                    _email = value;
+                else throw new ArgumentNullException("User email can't be NULL !");
+            }
+        }
+        private string _phone;
+        public string Phone
+        {
+            get { return _phone; }
+            set
+            {
+                if (!value.Equals(string.Empty))
+                    _phone = value;
+                else throw new ArgumentNullException("User phone can't be NULL !");
+            }
+        }
     }
 }
